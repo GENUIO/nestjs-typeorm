@@ -18,13 +18,18 @@ export class UsersController {
   }
 
   @Post()
-  createUser(@Body() createUserDto: CreateUserDto ) : Promise<User> {
+  createUser(@Body() createUserDto: CreateUserDto ) : Promise<CreateUserDto> {
     return this.UsersService.createUser(createUserDto);
   }
 
   @Put(':id')
   updateUser( @Param('id') id : string, @Body() createUserDto : CreateUserDto ) : Promise<User> {
     return this.UsersService.updateUser(id, createUserDto);
+  }
+
+  @Delete(':id')
+  deleteUser ( @Param('id') id: string ) {
+    return this.UsersService.remove(id);
   }
 
   /*
